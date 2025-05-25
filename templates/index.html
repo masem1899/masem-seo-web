@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyseoa - Web SEO Analyzer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <div class="max-w-xl mx-auto py-12">
+    <h1 class="text-3xl font-bold mb-6">🔍 pyseoa: SEO Analyzer</h1>
+    <form method="post" action="/analyze" class="bg-white p-6 rounded shadow">
+      <label class="block mb-2 font-semibold">Enter a URL:</label>
+      <input name="url" required type="url" placeholder="https://example.com"
+             class="w-full border border-gray-300 p-2 rounded mb-4" />
+      <label class="inline-flex items-center mb-4">
+        <input type="checkbox" name="crawl" class="form-checkbox" />
+        <span class="ml-2">Include subpages (crawl)</span>
+      </label>
+      <button type="submit"
+              class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        Analyze
+      </button>
+    </form>
+  </div>
+</body>
+</html>
