@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 #from pyseoa import SmartBatchSEOAnalyzer
 from pyseoa import BatchSEOAnalyzer
 from rate_limiter import get_user_id, can_run_analysis, record_analysis
@@ -10,12 +11,32 @@ import uvicorn
 app = FastAPI()
 app.add_middleware(I18nMiddleware)
 templates = Jinja2Templates(directory="templates")
+# Serve static files from "assets" directory at "/static"
+app.mount("/static", StaticFiles(directory="assets"), name="static")
+
+
 
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request):
     _ = request.state.gettext
     return templates.TemplateResponse("index.html", {
         "request": request,
+        '_': _,
+    })
+
+@app.get('/legal', response_class=HTMLResponse)
+def legal_note(request: Request):
+    _ = request.state.gettext
+    return templates.TemplateResponse("legal-note.html", {
+        'request': request,
+        '_': _,
+    })
+
+@app.get('/privacy', response_class=HTMLResponse)
+def privacy_policy(request: Request):
+    _ = request.state.gettext
+    return templates.TemplateResponse("privacy-policy.html", {
+        'request': request,
         '_': _,
     })
 
