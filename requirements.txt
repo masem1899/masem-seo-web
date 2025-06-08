@@ -1,7 +1,7 @@
 fastapi
 uvicorn
 jinja2
-pyseoa
+pyseoa==0.2.3
 tqdm
 python-multipart
 babel
