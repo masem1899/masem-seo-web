@@ -4,3 +4,4 @@ jinja2
 pyseoa
 tqdm
 python-multipart
+babel

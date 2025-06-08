@@ -25,7 +25,11 @@
         </table>
       </div>
     {% endfor %}
+    {% if message %}
+      <p class="mb-4 text-sm text-gray-600">💡 {{ message }}</p>
+    {% endif %}
     <a href="/" class="text-blue-600 hover:underline">⬅ Analyze another URL</a>
   </div>
+  {% include "_footer.html" %}
 </body>
 </html>
